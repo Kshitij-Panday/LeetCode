@@ -1,29 +1,32 @@
 class Solution {
     public void sortColors(int[] nums) {
-       boolean swapped;
+        int start = 0;
+        int mid = 0;
+        int end = nums.length-1;
 
-    for (int i = 0; i < nums.length; i++) {
+        while(mid <= end){
+            switch(nums[mid]){
+                case 0:
+                swap(nums,start,mid);
+                mid++;
+                start++;
+                break;
 
-      swapped = false;
+                case 1:
+                mid++;
+                break;
 
-      // after each pass, largest element moves to the end
-      for (int j = 1; j <= nums.length - i - 1; j++) {
-
-        // swap if current element is smaller
-        if (nums[j] < nums[j - 1]) {
-
-          int temp = nums[j];
-          nums[j] = nums[j - 1];
-          nums[j - 1] = temp;
-
-          swapped = true;
+                case 2:
+                swap(nums,mid,end);
+                end--;
+                break;
+            }
         }
-      }
+    }
+    void swap(int [] nums , int first , int second){
+        int temp = nums[first];
+        nums[first] = nums[second];
+        nums[second] = temp;
+    }
 
-      // if no swapping happened, array is sorted
-      if (!swapped) {
-        break;
-      }
-    }
-    }
 }

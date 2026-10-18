@@ -10,14 +10,16 @@ class MyStack {
     }
     
     public int pop() {
-        for(int i =0;i<q.size()-1;i++){
+        int n = q.size();
+        for(int i =0;i<n-1;i++){
             q.add(q.remove());
         }
         return q.remove();
     }
     
     public int top() {
-         for(int i =0;i<q.size()-1;i++){
+        int n = q.size();
+         for(int i =0;i<n-1;i++){
             q.add(q.remove());
         }
         
